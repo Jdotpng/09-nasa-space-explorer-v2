@@ -35,8 +35,9 @@ const fetchImages = async () => {
 
   // Show a friendly loading message inside the gallery while we fetch data
   // This will be replaced by the gallery content once data arrives
+  gallery.setAttribute('aria-busy', 'true');
   gallery.innerHTML = `
-    <div class="placeholder">
+    <div class="placeholder" role="status" aria-live="polite">
       <div class="placeholder-icon">🔄</div>
       <p>Loading space photos…</p>
     </div>
@@ -68,6 +69,7 @@ const fetchImages = async () => {
     `;
   } finally {
     setLoading(false); // end loading
+    gallery.removeAttribute('aria-busy');
   }
 };
 
