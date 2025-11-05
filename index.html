@@ -4,7 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NASA Space Explorer</title>
+  <!-- NASA/US Gov style font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Theme color for mobile browser UI -->
+  <meta name="theme-color" content="#0B3D91" />
   <link href="style.css" rel="stylesheet" type="text/css" />
+  <!-- Favicon using the NASA worm logo -->
+  <link rel="icon" type="image/png" href="img/nasa-worm-logo.png" />
 </head>
 <body>
   <div class="container">
@@ -14,14 +22,45 @@
     </header>
 
     <div class="filters">
-      <button id="getImageBtn">Fetch Space Images</button>
+      <!-- Make button label consistent with script.js -->
+      <button id="getImageBtn">Get Space Images</button>
     </div>
+
+    <!-- Random Space Fact -->
+    <section id="spaceFact" class="space-fact" aria-live="polite">
+      <div class="space-fact-header">
+        <span class="space-fact-label">Did you know?</span>
+        <button id="newFactBtn" class="space-fact-btn" type="button" aria-label="Show another space fact">New fact</button>
+      </div>
+      <p id="spaceFactText"></p>
+    </section>
 
     <div id="gallery" class="gallery">
       <div class="placeholder">
         <div class="placeholder-icon">🔭</div>
-        <p>Click "Fetch Space Images" to explore the cosmos!</p>
+        <p>Click "Get Space Images" to explore the cosmos!</p>
       </div>
+    </div>
+    <footer class="site-footer">
+      <div class="footer-left">
+        <img src="img/nasa-worm-logo.png" alt="NASA Logo" class="footer-logo" />
+      </div>
+      <div class="footer-right">
+        <p>Powered by NASA APOD data. This is a student project and not an official NASA website.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Modal for larger image + details -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDesc" tabindex="-1">
+    <div class="modal-content">
+      <button id="modalClose" class="modal-close" aria-label="Close">×</button>
+      <!-- Media area: image is shown for photos; a video iframe container is used for videos -->
+      <img id="modalImage" class="modal-image" src="" alt="Expanded space image" />
+      <div id="modalVideoContainer" class="modal-video-container" aria-hidden="true"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDate" class="date"></p>
+      <p id="modalDesc" class="desc"></p>
     </div>
   </div>
 
